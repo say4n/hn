@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <main className='container mx-auto'>
       <div className="flex flex-row flex-wrap my-2 p-2 font-mono text-orange-400 font-semibold outline outline-4 outline-orange-400">
-        <div className="flex flex-row basis-1/3 justify-evenly">
+        <div className="flex flex-row basis-1/2 justify-evenly">
           <div className="basis-4/5 tracking-wider justify-evenly">news.ycombinator.com</div>
           <div className="flex flex-row basis-1/5 justify-evenly">
             {topNOptions.map(option => (
@@ -32,8 +32,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="basis-1/3"></div>
-        <div className="flex flex-row gap-4 basis-1/3 justify-evenly">
+        <div className="flex flex-row gap-4 basis-1/2 justify-evenly">
           {
             sections.map((section) => (
               <div className="flex-auto" key={section.sectionName}>
