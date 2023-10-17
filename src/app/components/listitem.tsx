@@ -34,7 +34,7 @@ export const ListItem = (props: { postId: string }) => {
             {
                 typedData.url &&
                 <>
-                    <a className="hover:underline" href={typedData.url}>
+                    <a className="hover:underline" href={typedData.url} target="_blank">
                         {typedData.title}
                     </a>
                     &nbsp;
@@ -47,14 +47,14 @@ export const ListItem = (props: { postId: string }) => {
         </h1>
         <ul className={`mt-1 flex space-x-1 text-s ${inter.variable} font-sans leading-4 text-gray-500`}>
             <li>{typedData.score} points</li>
-            <li>by <a className="text-orange-400" href={byUrl}>
+            <li>by <a className="text-orange-400" href={byUrl} target="_blank">
                 {typedData.by} <FontAwesomeIcon icon={faSquareArrowUpRight} />
             </a>
             </li>
             <li>{formatDistanceToNow(timestamp)} ago</li>
             <li>&middot;</li>
             <li>
-                <a className="text-orange-400" href={postUrl}>
+                <a className="text-orange-400" href={postUrl} target="_blank">
                     {typedData.descendants} comments <FontAwesomeIcon icon={faSquareArrowUpRight} />
                 </a>
             </li>
