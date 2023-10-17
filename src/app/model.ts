@@ -7,6 +7,7 @@ export const ListItemType = Record({
     kids: Optional(Array(Number)),
     score: Number,
     time: Number,
+    text: Optional(String),
     title: String,
     type: String,
     url: Optional(String),
