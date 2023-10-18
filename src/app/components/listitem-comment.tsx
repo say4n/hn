@@ -14,7 +14,7 @@ export const Comment = (props: ListItemType) => {
     const byUrl = `https://news.ycombinator.com/user?id=${props.by}`
 
     return (
-        <div className={`border-l-2 my-2 border-slate-400 ps-4`}>
+        <div className={`border-l-2 my-2 border-gray-500 ps-4`}>
             <div className="text-sm">
                 {props.text && parse(props.text)}
             </div>
