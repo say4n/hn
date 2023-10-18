@@ -16,8 +16,6 @@ export const Story = (props: ListItemType) => {
     const timestamp = new Date(props.time!! * 1000)
     const byUrl = `https://news.ycombinator.com/user?id=${props.by}`
 
-    console.log(shouldExpandComments);
-
     return <>
         <h1 className="text-base">
             {
