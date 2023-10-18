@@ -21,7 +21,7 @@ export const Section = (props: { section: string, topN: number }) => {
 
     return (
         <>
-            {firstN.map((item: string) => <ListItem key={item} postId={item} />)}
+            {firstN.map((item: number) => <ListItem key={item} postId={item} />)}
         </>
     )
 }

@@ -4,17 +4,22 @@ import { useState } from "react";
 import { inter } from "../const";
 import { formatDistanceToNow } from "date-fns";
 import parse from "html-react-parser"
+import { ListItemType } from "../model";
+import { ListItem } from "./listitem";
 
 
-export const Story = (props: any) => {
+
+export const Story = (props: ListItemType) => {
     const [shouldExpandText, setShouldExpandText] = useState(false);
+    const [shouldExpandComments, setShouldExpandComments] = useState(false);
 
-    const timestamp = new Date(props.time * 1000)
+    const timestamp = new Date(props.time!! * 1000)
     const byUrl = `https://news.ycombinator.com/user?id=${props.by}`
-    const postUrl = `https://news.ycombinator.com/item?id=${props.id}`
+
+    console.log(shouldExpandComments);
 
     return <>
-        <h1 className="text-lg">
+        <h1 className="text-base">
             {
                 props.url &&
                 <>
@@ -29,7 +34,7 @@ export const Story = (props: any) => {
                 !props.url && props.title
             }
         </h1>
-        <ul className={`mt-1 flex space-x-1 text-s ${inter.variable} font-sans leading-4 text-gray-500`}>
+        <ul className={`mt-1 flex space-x-1 text-sm ${inter.variable} font-sans leading-4 text-gray-500`}>
             <li>{props.score} points</li>
             <li>by <a className="text-orange-400" href={byUrl} target="_blank">
                 {props.by}&nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
@@ -38,9 +43,18 @@ export const Story = (props: any) => {
             <li>{formatDistanceToNow(timestamp)} ago</li>
             <li>&middot;</li>
             <li>
-                <a className="text-orange-400" href={postUrl} target="_blank">
-                    {props.descendants} comments&nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
-                </a>
+                {
+                    !shouldExpandComments &&
+                    <button className="text-orange-400" onClick={() => setShouldExpandComments(true)}>
+                        {props.descendants} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretDown} />
+                    </button>
+                }
+                {
+                    shouldExpandComments &&
+                    <button className="text-orange-400" onClick={() => setShouldExpandComments(false)}>
+                        {props.descendants} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretUp} />
+                    </button>
+                }
             </li>
             {
                 props.text &&
@@ -66,10 +80,16 @@ export const Story = (props: any) => {
         {
             props.text && shouldExpandText && <>
                 <br />
-                <p className="text-s">
+                <div className="text-sm">
                     {parse(props.text)}
-                </p>
+                </div>
             </>
+        }
+        {
+            props.kids && shouldExpandComments &&
+            props.kids.map((kid) => (
+                <ListItem key={kid} postId={kid} />
+            ))
         }
         <br />
         <hr />

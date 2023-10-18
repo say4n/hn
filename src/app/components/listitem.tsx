@@ -2,8 +2,10 @@ import useSWR from "swr"
 import { fetcher } from "./utils"
 import { ItemType, ListItemType } from "../model"
 import { Story } from "./listitem-story"
+import { Comment } from "./listitem-comment"
 
-export const ListItem = (props: { postId: string, indentation?: number }) => {
+export const ListItem = (props: { postId: number }) => {
+    // console.log(`ListItem(postId: ${props.postId})`)
     const { data, error, isLoading } = useSWR(`https://hacker-news.firebaseio.com/v0/item/${props.postId}.json`, fetcher)
 
     if (error)
@@ -21,5 +23,9 @@ export const ListItem = (props: { postId: string, indentation?: number }) => {
     if ([ItemType.Story, ItemType.Job].includes(typedData.type!!))
         return (
             <Story {...typedData} />
+        )
+    if (typedData.type!! == ItemType.Comment && !typedData.deleted)
+        return (
+            <Comment {...typedData} />
         )
 }
