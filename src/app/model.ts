@@ -1,4 +1,4 @@
-import { String, Number, Boolean, Record, Array, Static, Optional, Literal, Union } from "runtypes";
+import { String, Number, Boolean, Record, Array, Static, Optional, Literal, Union } from "runtypes"
 
 export const enum ItemType {
     Story = "story",
@@ -7,6 +7,9 @@ export const enum ItemType {
     Poll = "poll",
     PollOption = "pollopt"
 }
+
+export const IdListType = Array(Number)
+export type IdListType = Static<typeof IdListType>
 
 export const ListItemType = Record({
     id: Number,
@@ -33,4 +36,4 @@ export const ListItemType = Record({
     url: Optional(String),
 })
 
-export type ListItemType = Static<typeof ListItemType>;
+export type ListItemType = Static<typeof ListItemType>

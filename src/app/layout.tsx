@@ -3,7 +3,6 @@ import './globals.css'
 import { inter } from './const'
 
 
-
 export const metadata: Metadata = {
   title: 'HN',
   description: 'yet another hacker news clone',
@@ -16,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>{children}</body>
+      <body className={`${inter.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   )
 }

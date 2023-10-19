@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google"
 
+export const appCacheName = "hn.cache"
+
 export const inter = Inter({
     subsets: ['latin'],
     variable: '--font-inter',
@@ -32,4 +34,4 @@ export const sections = [
     },
 ]
 
-export const topNOptions = [10, 20, 30]
+export const topNOptions = [10, 20, 30, "all"]

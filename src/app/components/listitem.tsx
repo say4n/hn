@@ -1,11 +1,10 @@
 import useSWR from "swr"
-import { fetcher } from "./utils"
+import { fetcher } from "../utils"
 import { ItemType, ListItemType } from "../model"
 import { Story } from "./listitem-story"
 import { Comment } from "./listitem-comment"
 
 export const ListItem = (props: { postId: number }) => {
-    // console.log(`ListItem(postId: ${props.postId})`)
     const { data, error, isLoading } = useSWR(`https://hacker-news.firebaseio.com/v0/item/${props.postId}.json`, fetcher)
 
     if (error)
@@ -14,9 +13,7 @@ export const ListItem = (props: { postId: number }) => {
         </p>
 
     if (isLoading)
-        return <p>
-            Loading...
-        </p>
+        return <></>
 
     const typedData = ListItemType.check(data)
 
