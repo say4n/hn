@@ -25,7 +25,9 @@ export const Story = (props: ListItemType) => {
                         {props.title}
                     </a>
                     &nbsp;
-                    <FontAwesomeIcon icon={faSquareArrowUpRight} />
+                    <a className="text-orange-400" href={`https://news.ycombinator.com/item?id=${props.id}`} target="_blank">
+                        <FontAwesomeIcon icon={faSquareArrowUpRight} />
+                    </a>
                 </>
             }
             {
@@ -39,21 +41,26 @@ export const Story = (props: ListItemType) => {
             </a>
             </li>
             <li>{formatDistanceToNow(timestamp)} ago</li>
-            <li>&middot;</li>
-            <li>
-                {
-                    !shouldExpandComments &&
-                    <button className="text-orange-400" onClick={() => setShouldExpandComments(true)}>
-                        {props.descendants} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretDown} />
-                    </button>
-                }
-                {
-                    shouldExpandComments &&
-                    <button className="text-orange-400" onClick={() => setShouldExpandComments(false)}>
-                        {props.descendants} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretUp} />
-                    </button>
-                }
-            </li>
+            {
+                props.kids && props.kids.length > 0 &&
+                <>
+                    <li>&middot;</li>
+                    <li>
+                        {
+                            !shouldExpandComments &&
+                            <button className="text-orange-400" onClick={() => setShouldExpandComments(true)}>
+                                {props.kids.length} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretDown} />
+                            </button>
+                        }
+                        {
+                            shouldExpandComments &&
+                            <button className="text-orange-400" onClick={() => setShouldExpandComments(false)}>
+                                {props.kids.length} comments&nbsp;<FontAwesomeIcon icon={faSquareCaretUp} />
+                            </button>
+                        }
+                    </li>
+                </>
+            }
             {
                 props.text &&
                 <>
