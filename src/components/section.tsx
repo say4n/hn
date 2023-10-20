@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import { ListItem } from "./listitem"
-import { fetcher } from '../utils'
+import { fetcher } from '@/utils'
 import { useLayoutEffect, useRef } from 'react'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 
@@ -22,7 +22,7 @@ export const Section = (props: { section: string, topN: number | string }) => {
         parentOffsetRef.current = parentRef.current?.offsetTop ?? 0
     })
 
-    
+
     if (error) {
         return <p>
             Error: {error}

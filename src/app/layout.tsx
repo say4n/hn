@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { inter } from './const'
+import { inter } from '@/const'
 
 
 export const metadata: Metadata = {

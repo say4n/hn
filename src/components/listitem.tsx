@@ -1,6 +1,6 @@
 import useSWR from "swr"
-import { fetcher } from "../utils"
-import { ItemType, ListItemType } from "../model"
+import { fetcher } from "@/utils"
+import { ItemType, ListItemType } from "@/model"
 import { Story } from "./listitem-story"
 import { Comment } from "./listitem-comment"
 import { Loading } from "./listitem-loading"

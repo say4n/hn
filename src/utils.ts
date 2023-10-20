@@ -11,6 +11,16 @@ const setItemWithExpiry = async (key: string, value: string, ttl: number = 5 * 6
       }
     ))
   )
+
+  // Evict expired keys.
+  const keys = await cache.keys()
+  keys.map(async key => {
+    const { expiry } = await (await cache.match(key.url))?.json()
+
+    if (new Date().getTime() > expiry) {
+      cache.delete(key)
+    }
+  })
 }
 
 const getItemWithExpiry = async (key: string) => {
@@ -36,9 +46,9 @@ export const fetcher = async (url: URL | string) => {
   if (item)
     return JSON.parse(item)
 
-  const response =  await fetch(url)
+  const response = await fetch(url)
   const json = await response.json()
-  
+
   await setItemWithExpiry(cacheKey, JSON.stringify(json))
   const itemAfterSet = await getItemWithExpiry(cacheKey)
 

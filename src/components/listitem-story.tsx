@@ -1,10 +1,10 @@
 import { faSquareArrowUpRight, faSquareCaretDown, faSquareCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { inter } from "../const";
+import { inter } from "@/const";
 import { formatDistanceToNow } from "date-fns";
 import parse from "html-react-parser"
-import { ListItemType } from "../model";
+import { ListItemType } from "@/model";
 import { ListItem } from "./listitem";
 
 

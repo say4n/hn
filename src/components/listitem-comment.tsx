@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ListItemType } from "../model"
+import { ListItemType } from "@/model"
 import parse from "html-react-parser"
-import { inter } from "../const";
+import { inter } from "@/const";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareArrowUpRight, faSquareCaretDown, faSquareCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { formatDistanceToNow } from "date-fns";

@@ -1,8 +1,8 @@
 "use client"
 
 import { Fragment, useState } from "react"
-import { Section } from "./components/section"
-import { sections, topNOptions } from "./const"
+import { Section } from "@/components/section"
+import { sections, topNOptions } from "@/const"
 
 const Home = () => {
   const [selectedSection, setSelectedSection] = useState(sections[0])
