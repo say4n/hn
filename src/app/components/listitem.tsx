@@ -8,12 +8,10 @@ export const ListItem = (props: { postId: number }) => {
     const { data, error, isLoading } = useSWR(`https://hacker-news.firebaseio.com/v0/item/${props.postId}.json`, fetcher)
 
     if (error)
-        return <p>
-            Error: {error}
-        </p>
+        return <p>Error: {error}</p>
 
     if (isLoading)
-        return <div style={{ height: "3 rem" }} />
+        return <p>&nbsp;</p>
 
     const typedData = ListItemType.check(data)
 
