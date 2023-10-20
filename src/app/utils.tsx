@@ -1,6 +1,6 @@
 import { appCacheName } from "./const";
 
-const setItemWithExpiry = async (key: string, value: string, ttl: number = 60) => {
+const setItemWithExpiry = async (key: string, value: string, ttl: number = 5 * 60 /* 5 minutes */) => {
   const cache = await caches.open(appCacheName)
   await cache.put(
     key,
