@@ -22,10 +22,10 @@ export const Comment = (props: ListItemType) => {
                 </div>
 
                 <ul className={`mt-1 flex space-x-1 text-sm ${inter.variable} font-sans leading-4 text-gray-500`}>
-                    <li>{props.score} points</li>
-                    <li>by <a className="text-orange-400" href={byUrl} target="_blank">
-                        {props.by}&nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
-                    </a>
+                    <li>
+                        <a className="text-orange-400" href={byUrl} target="_blank">
+                            {props.by}&nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
+                        </a>
                     </li>
                     <li>{formatDistanceToNow(timestamp)} ago</li>
                     {
