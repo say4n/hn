@@ -13,7 +13,7 @@ export const ListItem = (props: { postId: number }) => {
         </p>
 
     if (isLoading)
-        return <div />
+        return <div style={{ height: "3 rem" }} />
 
     const typedData = ListItemType.check(data)
 
