@@ -30,10 +30,9 @@ export const Section = (props: { section: string, topN: number | string }) => {
     }
 
     if (isLoading) {
-        return <p>
-            Loading...
-        </p>
+        return <p> Loading...</p>
     }
+
 
     const firstN = data.slice(0, count);
     const vItems = rowVirtualizer.getVirtualItems()
