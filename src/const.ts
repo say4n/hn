@@ -2,6 +2,8 @@ import { Inter } from "next/font/google"
 
 export const appCacheName = "hn.cache"
 
+export const fragmentMarker = "#/"
+
 export const inter = Inter({
     subsets: ['latin'],
     variable: '--font-inter',

@@ -1,11 +1,22 @@
 "use client"
 
-import { Fragment, useState } from "react"
+import { Fragment, useCallback, useEffect, useState } from "react"
 import { Section } from "@/components/section"
-import { sections, topNOptions } from "@/const"
+import { fragmentMarker, sections, topNOptions } from "@/const"
+import { useRouter } from 'next/navigation'
 
 const Home = () => {
-  const [selectedSection, setSelectedSection] = useState(sections[0])
+  const router = useRouter()
+
+  const fragmentPath = window.location.hash.split(fragmentMarker).at(1)
+  const selectionFromFragmentPath = sections.filter((section) => section.sectionName === fragmentPath).at(0)
+
+  const [selectedSection, __setSelectedSection] = useState(selectionFromFragmentPath || sections[0])
+  const setSelectedSection = useCallback((section: any) => {
+    router.push(`${fragmentMarker}${section.sectionName}`)
+    __setSelectedSection(section)
+  }, [router])
+
   const [selectedTopN, setSelectedTopN] = useState(topNOptions[0])
 
   return (
