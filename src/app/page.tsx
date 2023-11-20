@@ -4,18 +4,26 @@ import { Fragment, useCallback, useEffect, useState } from "react"
 import { Section } from "@/components/section"
 import { fragmentMarker, sections, topNOptions } from "@/const"
 import { useRouter } from 'next/navigation'
+import { useLocationHash } from "@/hooks"
 
 const Home = () => {
   const router = useRouter()
+  const location = useLocationHash()
 
-  const fragmentPath = window.location.hash.split(fragmentMarker).at(1)
-  const selectionFromFragmentPath = sections.filter((section) => section.sectionName === fragmentPath).at(0)
+  const [selectedSection, __setSelectedSection] = useState(sections[0])
 
-  const [selectedSection, __setSelectedSection] = useState(selectionFromFragmentPath || sections[0])
   const setSelectedSection = useCallback((section: any) => {
     router.push(`${fragmentMarker}${section.sectionName}`)
     __setSelectedSection(section)
   }, [router])
+
+
+  useEffect(() => {
+    const fragmentPath = location.split(fragmentMarker).at(1) || sections[0].sectionName
+    const selectionFromFragmentPath = sections.filter((section) => section.sectionName === fragmentPath).at(0) || sections[0]
+
+    selectionFromFragmentPath && setSelectedSection(selectionFromFragmentPath)
+  }, [location, setSelectedSection])
 
   const [selectedTopN, setSelectedTopN] = useState(topNOptions[0])
 
