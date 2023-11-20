@@ -25,7 +25,6 @@ export const ListItem = (props: { postId: number }) => {
                 <Comment {...typedData} />
             )
     } catch (e: any) {
-        console.error(e, data)
         return <></>
     }
 }
