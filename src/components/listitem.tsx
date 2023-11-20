@@ -14,14 +14,18 @@ export const ListItem = (props: { postId: number }) => {
     if (isLoading)
         return <Loading />
 
-    const typedData = ListItemType.check(data)
-
-    if ([ItemType.Story, ItemType.Job].includes(typedData.type!!))
-        return (
-            <Story {...typedData} />
-        )
-    if (typedData.type!! == ItemType.Comment && !typedData.deleted)
-        return (
-            <Comment {...typedData} />
-        )
+    try {
+        const typedData = ListItemType.check(data)
+        if ([ItemType.Story, ItemType.Job].includes(typedData.type!!))
+            return (
+                <Story {...typedData} />
+            )
+        if (typedData.type!! == ItemType.Comment && !typedData.deleted)
+            return (
+                <Comment {...typedData} />
+            )
+    } catch (e: any) {
+        console.error(e, data)
+        return <></>
+    }
 }
