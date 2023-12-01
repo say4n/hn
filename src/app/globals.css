@@ -4,3 +4,7 @@
 pre {
   white-space: normal;
 }
+
+a {
+  white-space: pre-wrap;
+}
