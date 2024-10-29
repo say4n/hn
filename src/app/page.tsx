@@ -52,7 +52,7 @@ const Home = () => {
         <div className="basis-1/5 flex flex-row justify-evenly outline outline-4 outline-orange-400 p-2 m-2">
           {
             sections.map((section) => (
-              <div key={section.sectionName}>
+              <div key={section.sectionName} className="px-0.5">
                 {
                   selectedSection === section &&
                   <button className="text-white bg-orange-400" onClick={() => setSelectedSection(section)}>

@@ -15,9 +15,10 @@ const setItemWithExpiry = async (key: string, value: string, ttl: number = 5 * 6
   // Evict expired keys.
   const keys = await cache.keys()
   keys.map(async key => {
-    const { expiry } = await (await cache.match(key.url))?.json()
+    const cachedValue = await cache.match(key.url)
+    const { expiry } = cachedValue && await cachedValue.json()
 
-    if (new Date().getTime() > expiry) {
+    if (expiry && new Date().getTime() > expiry) {
       cache.delete(key)
     }
   })

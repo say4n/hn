@@ -27,7 +27,12 @@ export const Comment = (props: ListItemType) => {
                             {props.by}&nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
                         </a>
                     </li>
-                    <li>{formatDistanceToNow(timestamp)} ago</li>
+                    <li>
+                        {formatDistanceToNow(timestamp)} ago&nbsp;
+                        <a className="text-orange-400" href={`https://news.ycombinator.com/item?id=${props.id}`} target="_blank">
+                            <FontAwesomeIcon icon={faSquareArrowUpRight} />
+                        </a>
+                    </li>
                     {
                         props.kids && props.kids.length > 0 &&
                         <>
